@@ -167,3 +167,60 @@ footer {
     background: #0a2540;
     color: white;
 }
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(10,37,64,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10,37,64,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridMove 40s linear infinite;
+    z-index: -3;
+}
+
+@keyframes gridMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 600px 600px;
+    }
+}
+.bg-dots {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(0,194,255,0.18) 2px, transparent 2px);
+    background-size: 80px 80px;
+    animation: dotsFloat 30s ease-in-out infinite alternate;
+    z-index: -2;
+}
+
+@keyframes dotsFloat {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-120px);
+    }
+}
+body:hover .bg-dots {
+    background-size: 60px 60px;
+    transition: background-size 0.6s ease;
+}
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+        rgba(0,194,255,0.08),
+        transparent 65%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: -1;
+}
+
+.section:hover::before {
+    opacity: 1;
+}
+
